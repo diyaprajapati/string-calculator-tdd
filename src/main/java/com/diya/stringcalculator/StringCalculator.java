@@ -6,9 +6,12 @@ public class StringCalculator {
         if(numbers.isEmpty()) return 0;
 
         //for multiple numbers separated by comma
-        String[] numbersArray = numbers.split("[,\n]");
+        String[] numbersArray = numbers.split("[,\n]", -1);
         int sum = 0;
         for(String number : numbersArray) {
+            if(number.isBlank()) {
+                throw new NumberFormatException("Invalid input: empty number after delimiter");
+            }
             sum += Integer.parseInt(number);
         }
 
