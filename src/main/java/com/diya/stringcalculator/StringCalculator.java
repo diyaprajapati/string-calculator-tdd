@@ -6,7 +6,7 @@ public class StringCalculator {
         if(numbers.isEmpty()) return 0;
 
         //for multiple numbers separated by comma
-        String[] numbersArray = numbers.split(",");
+        String[] numbersArray = numbers.split("[,\n]");
         int sum = 0;
         for(String number : numbersArray) {
             sum += Integer.parseInt(number);
