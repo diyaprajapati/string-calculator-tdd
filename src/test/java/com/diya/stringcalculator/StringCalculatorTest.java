@@ -67,4 +67,14 @@ public class StringCalculatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {calculator.add("1,-2\n-3");});
         assertThat(exception.getMessage()).isEqualTo("Negative numbers not allowed: -2,-3");
     }
+
+    @Test
+    void shouldThrowErrorForMalformedCustomDelimiter() {
+        StringCalculator calculator = new StringCalculator();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.add("//***\n1***2");
+        });
+        assertThat(exception.getMessage()).isEqualTo("Invalid input: delimiter should be enclosed in brackets like //[***]");
+    }
+
 }
