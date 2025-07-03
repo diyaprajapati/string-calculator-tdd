@@ -2,6 +2,7 @@ package com.diya.stringcalculator;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringCalculatorTest {
     @Test
@@ -37,5 +38,12 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         int result = calculator.add("1\n2,3");
         assertThat(result).isEqualTo(6);
+    }
+
+    //handle an exceptions
+    @Test
+    void shouldThrowErrorIfTrailingDelimiter() {
+        StringCalculator calculator = new StringCalculator();
+        assertThrows(NumberFormatException.class, () -> {calculator.add("1,2,");});
     }
 }
