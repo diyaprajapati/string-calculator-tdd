@@ -2,14 +2,32 @@ package com.diya.stringcalculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     public int add(String numbers) {
         //for empty string
         if(numbers.isEmpty()) return 0;
 
+        //for custom delimiter
+        List<String> delimiters = new ArrayList<>(List.of(",", "\n"));
+
+        if(numbers.startsWith("//")) {
+            int end = numbers.indexOf('\n');
+            String delimiterPart = numbers.substring(2,end);
+
+            Matcher m = Pattern.compile("\\[(.+?)\\]").matcher(delimiterPart);
+            while(m.find()) {
+                delimiters.add(Pattern.quote(m.group(1)));
+            }
+            numbers = numbers.substring(end+1);
+        }
+
+        String regex = String.join("|", delimiters);
+
         //for multiple numbers separated by comma and new line
-        String[] numbersArray = numbers.split("[,\n]", -1);
+        String[] numbersArray = numbers.split(regex, -1);
         List<String> negatives = new ArrayList<>(); //to handle negative numbers
         int sum = 0;
 
