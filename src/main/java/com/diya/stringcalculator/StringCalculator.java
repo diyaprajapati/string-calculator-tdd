@@ -15,7 +15,17 @@ public class StringCalculator {
 
         if(numbers.startsWith("//")) {
             int end = numbers.indexOf('\n');
+
+            //exception for malformed custom delimiters
+            if(end == -1) {
+                throw new IllegalArgumentException("Invalid input: missing newline after custom delimiter declaration");
+            }
+
             String delimiterPart = numbers.substring(2,end);
+
+            if (!delimiterPart.matches("(\\[.+?])+")) {
+                throw new IllegalArgumentException("Invalid input: delimiter should be enclosed in brackets like //[***]");
+            }
 
             Matcher m = Pattern.compile("\\[(.+?)\\]").matcher(delimiterPart);
             while(m.find()) {
