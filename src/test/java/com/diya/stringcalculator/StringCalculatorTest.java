@@ -18,4 +18,11 @@ public class StringCalculatorTest {
         int result = calculator.add("5");
         assertThat(result).isEqualTo(5);
     }
+
+    @Test
+    void shouldReturnSumWhenTwoNumbersGiven() {
+        StringCalculator calculator = new StringCalculator();
+        int result = calculator.add("5,2");
+        assertThat(result).isEqualTo(7);
+    }
 }
