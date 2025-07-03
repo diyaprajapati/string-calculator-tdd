@@ -46,4 +46,11 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         assertThrows(NumberFormatException.class, () -> {calculator.add("1,2,");});
     }
+
+    @Test
+    void shouldThrowExceptionForNegativeNumbers() {
+        StringCalculator calculator = new StringCalculator();
+        Exception exception = assertThrows(IllegalAccessException.class, () -> {calculator.add("-1,-2\n-3");});
+        assertThat(exception.getMessage()).isEqualTo("Negative numbers not allowed");
+    }
 }
