@@ -11,4 +11,11 @@ public class StringCalculatorTest {
         int result = calculator.add("");
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    void shouldReturnSameNumberWhenOnlyOneNumberGiven() {
+        StringCalculator calculator = new StringCalculator();
+        int result = calculator.add("5");
+        assertThat(result).isEqualTo(5);
+    }
 }
