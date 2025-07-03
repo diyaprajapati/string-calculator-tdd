@@ -32,7 +32,7 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(10);
     }
 
-    @void shouldSupportNewLinesBetweenNumbers() {
+    void shouldSupportNewLinesBetweenNumbers() {
         StringCalculator calculator = new StringCalculator();
         int result = calculator.add("1\n2,3");
         assertThat(result).isEqualTo(6);
