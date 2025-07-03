@@ -40,6 +40,13 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
+    @Test
+    void shouldSupportCustomDelimiterOfAnyLength() {
+        StringCalculator calculator = new StringCalculator();
+        int result = calculator.add("//[***]\n1***2***3");
+        assertThat(result).isEqualTo(6);
+    }
+
     //handle an exceptions
     @Test
     void shouldThrowErrorIfTrailingDelimiter() {

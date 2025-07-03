@@ -27,6 +27,7 @@ public class StringCalculator {
             sum += num;
         }
 
+        //throws error and list of negative numbers
         if(!negatives.isEmpty()) {
             throw new IllegalArgumentException("Negative numbers not allowed: " + String.join(",", negatives));
         }
