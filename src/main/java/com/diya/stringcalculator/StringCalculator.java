@@ -5,13 +5,13 @@ public class StringCalculator {
         //for empty string
         if(numbers.isEmpty()) return 0;
 
-        //for two numbers separated by comma
-        if(numbers.contains(",")) {
-            String[] numbersArray = numbers.split(",");
-            return Integer.parseInt(numbersArray[0]) + Integer.parseInt(numbersArray[1]);
+        //for multiple numbers separated by comma
+        String[] numbersArray = numbers.split(",");
+        int sum = 0;
+        for(String number : numbersArray) {
+            sum += Integer.parseInt(number);
         }
 
-        //for single numbers
-        return Integer.parseInt(numbers);
+        return sum;
     }
 }
